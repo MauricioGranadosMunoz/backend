@@ -7,7 +7,7 @@ require('dotenv').config();
 class Server {
     constructor() {
         this.app = express();
-        this.port = 8443;
+        this.port = 80;
 
         //DB CONNECT
         this.conectarDB();
