@@ -41,7 +41,7 @@ const usuariosPost = async (req, res = response) => {
 }
 const usuariosPostImage = async (req, res = response) => { 
     const { name, role, email,password, personalId,status } = req.body;
-    const usuario = new Usuario( { name, thumb: `http://localhost:8080/${req.file.path}`, role, email,password, personalId, status } );
+    const usuario = new Usuario( { name, thumb: `http://www.mgm.social:4000//${req.file.path}`, role, email,password, personalId, status } );
     //Check if the email exist
     const existEmail = await Usuario.findOne({ email });
     const existPersonalId = await Usuario.findOne({ personalId });
@@ -132,13 +132,13 @@ const userImageUpload = async (req, res = response) => {
     if (req.body.updateImage){
         try {
             await Usuario.updateOne({ _id: req.body.userId }, { $set: { 
-                'thumb': `http://localhost:8080/${req.file.path}`
+                'thumb': `http://www.mgm.social:4000//${req.file.path}`
               }});
               
             res.status(200).send({
                 msg: 'IMAGEN ACTUALIZADA CORRECTAMENTE',
                 id: req.body.userId,
-                imagePath: `http://localhost:8080/${req.file.path}`
+                imagePath: `http://www.mgm.social:4000//${req.file.path}`
             })
         } catch (err) {
             res.status(500).send(err);
